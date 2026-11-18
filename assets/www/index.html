@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Vira VPN</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-state="disconnected">
+
+<main id="app">
+
+  <!-- ===================== صفحه اصلی ===================== -->
+  <section class="page active" id="page-home">
+    <header class="bar">
+      <button class="icon-btn" id="btn-exit" aria-label="خروج">
+        <svg viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
+      </button>
+      <h1>Vira VPN</h1>
+      <button class="icon-btn" id="btn-servers" aria-label="سرورها">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="6" rx="2"/><rect x="3" y="14" width="18" height="6" rx="2"/><path d="M7 7h.01M7 17h.01"/></svg>
+      </button>
+    </header>
+
+    <div class="hero">
+      <button id="connect-btn" class="connect" data-state="disconnected" aria-label="اتصال / قطع اتصال">
+        <i class="halo"></i><i class="arc"></i>
+        <span class="core">
+          <svg viewBox="0 0 24 24"><path d="M12 2.5v9.5"/><path d="M18.4 6.6a9 9 0 1 1-12.8 0"/></svg>
+        </span>
+      </button>
+      <div id="status-text" class="status">قطع شده</div>
+      <div id="timer" class="timer" dir="ltr">00:00:00</div>
+    </div>
+
+    <button id="server-card" class="server-card">
+      <span class="flag" id="sel-flag"><span class="globe">🌐</span></span>
+      <span class="info">
+        <small>سرور انتخابی</small>
+        <b id="sel-name">انتخاب سرور</b>
+      </span>
+      <span class="ping" id="sel-ping"></span>
+      <svg class="chev" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>
+    </button>
+
+    <div class="grid">
+      <div class="stat">
+        <small>سرعت دانلود</small>
+        <b id="speed-down" dir="ltr">0<em>B/s</em></b>
+        <svg class="mini down" viewBox="0 0 24 24"><path d="M12 4v14M6 12l6 6 6-6"/></svg>
+      </div>
+      <div class="stat">
+        <small>سرعت آپلود</small>
+        <b id="speed-up" dir="ltr">0<em>B/s</em></b>
+        <svg class="mini up" viewBox="0 0 24 24"><path d="M12 20V6M6 12l6-6 6 6"/></svg>
+      </div>
+      <div class="stat">
+        <small>کل دانلود</small>
+        <b id="total-down" dir="ltr">0<em>B</em></b>
+      </div>
+      <div class="stat">
+        <small>کل آپلود</small>
+        <b id="total-up" dir="ltr">0<em>B</em></b>
+      </div>
+    </div>
+
+    <button id="reset-traffic" class="link">صفر کردن مصرف</button>
+  </section>
+
+  <!-- ===================== انتخاب سرور ===================== -->
+  <section class="page" id="page-servers">
+    <header class="bar">
+      <button class="icon-btn" id="btn-back" aria-label="بازگشت">
+        <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+      <h1>انتخاب سرور</h1>
+      <button class="icon-btn" id="btn-refresh" aria-label="بروزرسانی">
+        <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7L21 8M21 3v5h-5"/></svg>
+      </button>
+    </header>
+
+    <div class="toolbar">
+      <button class="pill" id="btn-ping-all">تست پینگ همه</button>
+      <span class="count" id="srv-count"></span>
+    </div>
+
+    <div id="server-list" class="list"></div>
+  </section>
+
+</main>
+
+<div id="modal" class="modal hidden"><div class="sheet" id="sheet"></div></div>
+<div id="toast" class="toast"></div>
+
+<script src="js/bridge.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
